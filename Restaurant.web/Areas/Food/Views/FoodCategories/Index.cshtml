@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Restaurant.web.Models.FoodCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body style="background-image:url(https://thumbs.dreamstime.com/b/table-top-blurred-bar-cafe-restaurant-background-counter-78602134.jpg);">
+    <!-- First Navigation -->
+    <nav class="navbar nav-first navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="~/Img/navbar-brand.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, Pigga Landing page">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-primary" href="#home">CALL US : <span class="pl-2 text-muted">(+91) 70 28 658369</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- End of First Navigation -->
+    <!-- Second Navigation -->
+    <nav class="nav-second navbar custom-navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Foodmenus" asp-action="Index" style="color:chocolate">
+                            Food Menus
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Customers" asp-action="Index" style="color:chocolate">
+                            Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Orders" asp-action="Index" style="color:chocolate">
+                            Book a Table
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="FoodCategories" asp-action="Index" style="color:chocolate">
+                            Food Categories
+                        </a>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+
+<h3 style="background-color:lightcyan;font-family:'Comic Sans MS';font-style:italic;font-weight:bold">WELCOME  TO  OUR  RESTAURANT...!</h3>
+
+<p>
+   <button type="button" class="btn btn-outline-secondary"><a asp-action="Create"  style="font-weight:bold;color:darkmagenta">Create New</a></button> 
+</p>
+<table class="table">
+    <thead style="background-color:lightpink">
+        <tr >
+            <th >
+                @Html.DisplayNameFor(model => model.FoodcategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr style="background-color:lightcyan">
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodcategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FoodcategoryId" style="background-color:aliceblue;color:darkorange">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FoodcategoryId" style="background-color:aliceblue;color:darkorange">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FoodcategoryId" style="background-color:aliceblue;color:darkorange">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
